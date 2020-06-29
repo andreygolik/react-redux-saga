@@ -1,18 +1,18 @@
-import {CREATE_POST} from './types'
-import {showAlert} from './actions'
+import { CREATE_POST } from './types';
+import { showAlert } from './actions';
 
-const forbidden = ['fuck', 'spam', 'php']
+const forbidden = ['fuck', 'spam', 'php'];
 
 export function forbiddenWordsMiddleware({ dispatch }) {
   return function(next) {
     return function(action) {
       if (action.type === CREATE_POST) {
-        const found = forbidden.filter(w => action.payload.title.includes(w))
+        const found = forbidden.filter(w => action.payload.title.includes(w));
         if (found.length) {
-          return dispatch(showAlert('Вы спамер. Мы вас не звали, идите домой'))
+          return dispatch(showAlert('Forbidden word in the title'))
         }
       }
-      return next(action)
-    }
-  }
+      return next(action);
+    };
+  };
 }

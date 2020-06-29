@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default ({ post }) => {
   return (
@@ -7,5 +7,5 @@ export default ({ post }) => {
         <h5 className="card-title">{post.title}</h5>
       </div>
     </div>
-  )
-}
+  );
+};
